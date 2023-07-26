@@ -1,3 +1,8 @@
+#ifndef LISTS_H
+#define LISTS_H
+
+#include <stdio.h>
+#include <stdlib.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -13,3 +18,8 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
+stack_t *add_dnodeint(stack_t **head, unsigned int n);
+size_t print_dlistint(const stack_t *h);
+
+#endif
