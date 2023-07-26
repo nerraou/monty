@@ -1,42 +1,63 @@
 #include "lists.h"
 #include "main.h"
 
+/**
+ * print_and_exit - print error and exit
+ */
+void print_and_exit(char *message, char *arg)
+{
+	if (arg)
+	{
+		fprintf(stderr, "%s %s\n", message, arg);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		fprintf(stderr, "%s\n", message);
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * main - check the code
+ *
+ * Return: Always EXIT_SUCCESS.
+ */
 int main(int ac, char *av[])
 {
 	int fd;
 	char *line;
 	char *trimed;
 	int size;
-	int line_number = 0;
+	int line_number = 1;
 	stack_t *stack;
 
 	stack = NULL;
 	if (ac != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		print_and_exit("USAGE: monty file", NULL);
 	else
 	{
 		fd = open(av[1], O_RDONLY);
 		if (fd < 0)
-		{
-			fprintf(stderr, "Error: Can't open file %s\n", av[1]);
-			exit(EXIT_FAILURE);
-		}
+			print_and_exit("Error: Can't open file", av[1]);
 		while (1)
 		{
 			size = _getline(fd, &line);
+			if (size == -1)
+				print_and_exit("Error: malloc failed", NULL);
 			if (size == 0)
 				break;
 			trimed = _strtrim(line, " \t\n");
 			free(line);
+			if (trimed[0] == '\0')
+			{
+				line_number++;
+				continue;
+			}
 			if (!trimed)
 			{
-				free(line);
 				free_dlistint(stack);
-				fprintf(stderr, "Error: malloc failed\n");
-				exit(EXIT_FAILURE);
+				print_and_exit("Error: malloc failed", NULL);
 			}
 			_execute(trimed, &stack, line_number);
 			free(trimed);
