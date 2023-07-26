@@ -21,5 +21,6 @@ typedef struct stack_s
 
 stack_t *add_dnodeint(stack_t **head, unsigned int n);
 size_t print_dlistint(const stack_t *h);
+void free_dlistint(stack_t *head);
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
+
 #include "lib.h"
 #include "lists.h"
 #include "opcode.h"
