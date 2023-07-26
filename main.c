@@ -38,7 +38,7 @@ int main(int ac, char *av[])
 				fprintf(stderr, "Error: malloc failed\n");
 				exit(EXIT_FAILURE);
 			}
-			_execute(trimed, &stack);
+			_execute(trimed, &stack, line_number);
 			free(trimed);
 			line_number++;
 		}

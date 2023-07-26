@@ -1,6 +1,18 @@
 #include "main.h"
 
-int _execute(const char *command, stack_t **stack)
+void _opcode_check_error(char *val, int index, int l_num)
+{
+	char *errors[] = {
+		"usage: push integer",
+	};
+	if (_is_int(val) == 0)
+	{
+		fprintf(stderr, "L%d: %s\n", l_num, errors[index]);
+		exit(EXIT_FAILURE);
+	}
+}
+
+int _execute(const char *command, stack_t **stack, int l_num)
 {
 	int i;
 	instruction_t inst[] =
@@ -26,8 +38,9 @@ int _execute(const char *command, stack_t **stack)
 	}
 	if (inst[i].opcode != NULL)
 	{
-		if (_is_int(opcode[1]))
-			inst[i].f(stack, _atou(opcode[1]));
+		_opcode_check_error(opcode[1], i, l_num);
+
+		inst[i].f(stack, _atou(opcode[1]));
 	}
 	return 1;
 }
