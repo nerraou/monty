@@ -1,3 +1,6 @@
+#ifndef OPCODE_H
+#define OPCODE_H
+
 #include "lists.h"
 /**
  * struct instruction_s - opcode and its function
@@ -12,3 +15,5 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+#endif
