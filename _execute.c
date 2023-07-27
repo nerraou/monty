@@ -21,6 +21,23 @@ int _opcode_check_error(const char *val, int index, int l_num)
 }
 
 /**
+ * free_command - free command
+ * @command: string
+ */
+void free_command(char **command)
+{
+	int i;
+
+	i = 0;
+	while (command[i])
+	{
+		free(command[i]);
+		i++;
+	}
+	free(command);
+}
+
+/**
  * _execute - execute command
  * @command: instruction
  * @stack: stack
@@ -38,7 +55,8 @@ int _execute(const char *command, stack_t **stack, int l_num)
 	opcode = _strtow(command, " \t");
 	if (_strcmp(opcode[0], "pall") == 0)
 	{
-		_op_pall(*stack);
+		_op_pall( *stack );
+		free_command(opcode);
 		return (1);
 	}
 	i = 0;
@@ -50,9 +68,13 @@ int _execute(const char *command, stack_t **stack, int l_num)
 	}
 	if (inst[i].opcode != NULL)
 	{
-		if(_opcode_check_error(opcode[1], i, l_num) == 0)
+		if (_opcode_check_error(opcode[1], i, l_num) == 0)
+		{
+			free_command(opcode);
 			return (0);
+		}
 		inst[i].f(stack, _atou(opcode[1]));
 	}
+	free_command(opcode);
 	return (1);
 }

@@ -26,12 +26,12 @@ void print_and_exit(char *message, char *arg)
  * @stack: stack
  * @l_num: line number
  */
-void protected_execute(char *trimed, stack_t *stack, int l_num)
+void protected_execute(char *trimed, stack_t **stack, int l_num)
 {
-	if (_execute(trimed, &stack, l_num) == 0)
+	if (_execute(trimed, stack, l_num) == 0)
 	{
 		free(trimed);
-		free_dlistint(stack);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -74,7 +74,7 @@ int main(int ac, char *av[])
 				print_and_exit("Error: malloc failed", NULL);
 			}
 			if (trimed[0] != '\0')
-				protected_execute(trimed, stack, line_number);
+				protected_execute(trimed, &stack, line_number);
 			free(trimed);
 			line_number++;
 		}
