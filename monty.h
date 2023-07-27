@@ -58,12 +58,14 @@ typedef struct instruction_s
 stack_t *add_dnodeint(stack_t **head, unsigned int n);
 size_t print_dlistint(const stack_t *h);
 void free_dlistint(stack_t *head);
+void pop_dlistnode(stack_t **stack);
 
 int _execute(char *command, stack_t **stack, int l_num);
 
 void _op_push(stack_t **stack, int n);
 void _op_pall(stack_t **stack, unsigned int l_num);
 void _op_pint(stack_t **stack, unsigned int l_num);
+void _op_pop(stack_t **stack, unsigned int l_num);
 
 int _getline(int fd, char **linep);
 ssize_t _str_index_of(const char *str, char c);
