@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "monty.h"
 
 /**
  * _str_index_of - get index of c

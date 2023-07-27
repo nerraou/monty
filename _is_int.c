@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "monty.h"
 
 /**
  * _is_int - check if str contains integer

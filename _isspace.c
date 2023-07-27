@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "monty.h"
 
 /**
  * _isspace - check if a given character is whitespace

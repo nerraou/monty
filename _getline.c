@@ -1,5 +1,5 @@
 
-#include "lib.h"
+#include "monty.h"
 
 /**
  * get_line_from_buffer - get line from buffer

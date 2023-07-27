@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "monty.h"
 
 /**
  * join_and_free - join and free s1

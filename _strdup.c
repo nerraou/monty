@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "monty.h"
 
 /**
  * _strdup - duplicate an array
