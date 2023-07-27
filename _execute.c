@@ -55,7 +55,7 @@ int _execute(const char *command, stack_t **stack, int l_num)
 	opcode = _strtow(command, " \t");
 	if (_strcmp(opcode[0], "pall") == 0)
 	{
-		_op_pall( *stack );
+		_op_pall(*stack);
 		free_command(opcode);
 		return (1);
 	}
