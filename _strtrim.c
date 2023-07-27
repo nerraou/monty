@@ -36,6 +36,8 @@ size_t _strtrimlen(char const *s1, char const *set)
 	i = 0;
 	t = 0;
 	len = _strlen(s1);
+	if (len == 0)
+		return (0);
 	total_len = len;
 	while (s1[i])
 	{
