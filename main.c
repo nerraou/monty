@@ -58,32 +58,32 @@ int main(int ac, char *av[])
 	stack = NULL;
 	if (ac != 2)
 		print_and_exit("USAGE: monty file", NULL);
-	else
+	file = fopen(av[1], "r");
+	if (!file)
+		print_and_exit("Error: Can't open file", av[1]);
+	while (1)
 	{
-		file = fopen(av[1], "r");
-		if (!file)
-			print_and_exit("Error: Can't open file", av[1]);
-		while (1)
+		line = NULL;
+		len = 0;
+		nread = getline(&line, &len, file);
+		if (nread <= 0)
 		{
-			line = NULL;
-			len = 0;
-			nread = getline(&line, &len, file);
-			if (nread <= 0)
-				break;
-			trimed = _strtrim(line, " \t\n\r");
 			free(line);
-			if (!trimed)
-			{
-				free_dlistint(stack);
-				print_and_exit("Error: malloc failed", NULL);
-			}
-			if (trimed[0] != '\0')
-				protected_execute(trimed, &stack, line_number);
-			free(trimed);
-			line_number++;
+			break;
 		}
-		free_dlistint(stack);
-		fclose(file);
+		trimed = _strtrim(line, " \t\n\r");
+		free(line);
+		if (!trimed)
+		{
+			free_dlistint(stack);
+			print_and_exit("Error: malloc failed", NULL);
+		}
+		if (trimed[0] != '\0')
+			protected_execute(trimed, &stack, line_number);
+		free(trimed);
+		line_number++;
 	}
+	free_dlistint(stack);
+	fclose(file);
 	return (EXIT_SUCCESS);
 }
