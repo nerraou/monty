@@ -79,5 +79,6 @@ int _strcmp(char *s1, char *s2);
 int _isspace(char c);
 int _is_int(const char *str);
 unsigned int _atou(const char *str);
+void free_args(char **args);
 
 #endif /* MONTY_H */

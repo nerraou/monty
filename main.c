@@ -79,6 +79,8 @@ int main(int ac, char *av[])
 		}
 		if (trimed[0] != '\0')
 			protected_execute(trimed, &stack, line_number);
+		else
+			free(trimed);
 		line_number++;
 	}
 	free_dlistint(stack);
