@@ -75,6 +75,12 @@ int _execute(const char *command, stack_t **stack, int l_num)
 		}
 		inst[i].f(stack, _atou(opcode[1]));
 	}
+	else
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", l_num, opcode[0]);
+		free_command(opcode);
+		return (0);
+	}
 	free_command(opcode);
 	return (1);
 }
