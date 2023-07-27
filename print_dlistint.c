@@ -12,7 +12,7 @@ size_t print_dlistint(const stack_t *h)
 	size = 0;
 	while (h != NULL)
 	{
-		printf("%u\n", h->n);
+		printf("%d\n", h->n);
 		h = h->next;
 		size++;
 	}
