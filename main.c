@@ -66,7 +66,7 @@ int main(int ac, char *av[])
 				print_and_exit("Error: malloc failed", NULL);
 			if (size == 0)
 				break;
-			trimed = _strtrim(line, " \t\n");
+			trimed = _strtrim(line, " \t\n\r");
 			free(line);
 			if (!trimed)
 			{

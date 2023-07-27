@@ -52,7 +52,7 @@ int _execute(const char *command, stack_t **stack, int l_num)
 		{"push", _op_push},
 		{NULL, NULL}};
 
-	opcode = _strtow(command, " \t");
+	opcode = _strtow(command, " \t\r\n");
 	if (_strcmp(opcode[0], "pall") == 0)
 	{
 		_op_pall(*stack);
