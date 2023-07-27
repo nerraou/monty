@@ -3,6 +3,8 @@
 
 /**
  * print_and_exit - print error and exit
+ * @message: error message
+ * @arg: message argument
  */
 void print_and_exit(char *message, char *arg)
 {
@@ -20,7 +22,8 @@ void print_and_exit(char *message, char *arg)
 
 /**
  * main - check the code
- *
+ * @ac: arguments count
+ * @av: arguments value
  * Return: Always EXIT_SUCCESS.
  */
 int main(int ac, char *av[])
@@ -49,21 +52,17 @@ int main(int ac, char *av[])
 				break;
 			trimed = _strtrim(line, " \t\n");
 			free(line);
-			if (trimed[0] == '\0')
-			{
-				line_number++;
-				continue;
-			}
 			if (!trimed)
 			{
 				free_dlistint(stack);
 				print_and_exit("Error: malloc failed", NULL);
 			}
-			_execute(trimed, &stack, line_number);
+			if (trimed[0] != '\0')
+				_execute(trimed, &stack, line_number);
 			free(trimed);
 			line_number++;
 		}
 		free_dlistint(stack);
 	}
-	return 0;
+	return (0);
 }

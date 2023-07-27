@@ -35,7 +35,7 @@ char *_substr(const char *s, int start, int len)
 }
 
 /**
- * _strclen - string length
+ * _strslen - string length
  *@str: string
  *@set: delimiers
  *Return: string length
@@ -92,8 +92,9 @@ void free_2d(char **grid, int height)
 }
 
 /**
- * strtow - split string to words
+ * _strtow - split string to words
  * @str: string
+ * @set: delimiters
  *Return: return 2d array
  */
 char **_strtow(const char *str, const char *set)

@@ -9,6 +9,8 @@ void _op_push(stack_t **stack, unsigned int n)
 {
 	if (add_dnodeint(stack, n) == NULL)
 	{
-		// print error
+		fprintf(stderr, "Error: malloc failed\n");
+		free_dlistint(*stack);
+		exit(EXIT_FAILURE);
 	}
 }

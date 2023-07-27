@@ -1,7 +1,7 @@
 #include "lib.h"
 
 /**
- * is_int - check if str contains integer
+ * _is_int - check if str contains integer
  * @str: string
  * Return: true if str is integer, otherwise false
  */

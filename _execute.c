@@ -30,7 +30,7 @@ int _execute(const char *command, stack_t **stack, int l_num)
 	int i;
 	char **opcode;
 	instruction_t inst[] = {
-		{.opcode = "push", .f = _op_push},
+		{"push", _op_push},
 		{NULL, NULL}
 	};
 
