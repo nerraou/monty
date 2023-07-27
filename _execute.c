@@ -5,8 +5,9 @@
  * @val: command argument
  * @index: command index
  * @l_num: line number
+ * Return: 0 or 1
  */
-void _opcode_check_error(const char *val, int index, int l_num)
+int _opcode_check_error(const char *val, int index, int l_num)
 {
 	char *errors[] = {
 		"usage: push integer",
@@ -14,8 +15,9 @@ void _opcode_check_error(const char *val, int index, int l_num)
 	if (_is_int(val) == 0)
 	{
 		fprintf(stderr, "L%d: %s\n", l_num, errors[index]);
-		exit(EXIT_FAILURE);
+		return (0);
 	}
+	return (1);
 }
 
 /**
@@ -43,15 +45,13 @@ int _execute(const char *command, stack_t **stack, int l_num)
 	while (inst[i].opcode)
 	{
 		if (_strcmp(opcode[0], inst[i].opcode) == 0)
-		{
 			break;
-		}
 		i++;
 	}
 	if (inst[i].opcode != NULL)
 	{
-		_opcode_check_error(opcode[1], i, l_num);
-
+		if(_opcode_check_error(opcode[1], i, l_num) == 0)
+			return (0);
 		inst[i].f(stack, _atou(opcode[1]));
 	}
 	return (1);

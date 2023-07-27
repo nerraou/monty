@@ -21,6 +21,22 @@ void print_and_exit(char *message, char *arg)
 }
 
 /**
+ * protected_execute - free stack and string and exit
+ * @trimed: trimed line
+ * @stack: stack
+ * @l_num: line number
+ */
+void protected_execute(char *trimed, stack_t *stack, int l_num)
+{
+	if (_execute(trimed, &stack, l_num) == 0)
+	{
+		free(trimed);
+		free_dlistint(stack);
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
  * main - check the code
  * @ac: arguments count
  * @av: arguments value
@@ -58,7 +74,7 @@ int main(int ac, char *av[])
 				print_and_exit("Error: malloc failed", NULL);
 			}
 			if (trimed[0] != '\0')
-				_execute(trimed, &stack, line_number);
+				protected_execute(trimed, stack, line_number);
 			free(trimed);
 			line_number++;
 		}
