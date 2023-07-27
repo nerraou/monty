@@ -73,7 +73,7 @@ int _execute(const char *command, stack_t **stack, int l_num)
 			free_command(opcode);
 			return (0);
 		}
-		inst[i].f(stack, _atou(opcode[1]));
+		inst[i].f(stack, atoi(opcode[1]));
 	}
 	else
 	{
