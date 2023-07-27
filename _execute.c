@@ -12,7 +12,7 @@ int _opcode_check_error(const char *val, int index, int l_num)
 	char *errors[] = {
 		"usage: push integer",
 	};
-	if (_is_int(val) == 0)
+	if (!val || _is_int(val) == 0)
 	{
 		fprintf(stderr, "L%d: %s\n", l_num, errors[index]);
 		return (0);
