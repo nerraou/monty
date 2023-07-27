@@ -12,8 +12,6 @@ int _is_int(const char *str)
 	i = 0;
 	while (_isspace(str[i]))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
 	while (str[i] != '\0')
 	{
 		if (str[i] < '0' || str[i] > '9')
