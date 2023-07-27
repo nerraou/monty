@@ -6,7 +6,6 @@ int fd = -1;
  * print_and_exit - print error and exit
  * @message: error message
  * @arg: message argument
- * @fd: file handle
  */
 void print_and_exit(char *message, char *arg)
 {
@@ -29,7 +28,6 @@ void print_and_exit(char *message, char *arg)
  * @trimed: trimed line
  * @stack: stack
  * @l_num: line number
- * @fd: file handle
  */
 void protected_execute(char *trimed, stack_t **stack, int l_num)
 {
