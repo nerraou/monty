@@ -8,6 +8,8 @@
 
 #define BUFFER_SIZE 5
 
+extern int fd;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
