@@ -61,6 +61,7 @@ int _getline(int fd, char **linep)
 				*linep = line;
 			else
 				free(line);
+			buffer[0] = '\0';
 			return (get_line_return);
 		}
 		buffer[read_bytes] = '\0';
