@@ -12,7 +12,7 @@ int _is_int(const char *str)
 	i = 0;
 	while (_isspace(str[i]))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-')
 		i++;
 	if (str[i] == '\0')
 		return (0);
