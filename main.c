@@ -1,5 +1,5 @@
 #include "lists.h"
-#include "main.h"
+#include "monty.h"
 
 /**
  * print_and_exit - print error and exit

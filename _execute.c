@@ -1,11 +1,11 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * _opcode_check_error - print opcode error
  * @val: command argument
  * @index: command index
  * @l_num: line number
-*/
+ */
 void _opcode_check_error(const char *val, int index, int l_num)
 {
 	char *errors[] = {
@@ -24,15 +24,14 @@ void _opcode_check_error(const char *val, int index, int l_num)
  * @stack: stack
  * @l_num: line number
  * Return: 1: success, 0: error
-*/
+ */
 int _execute(const char *command, stack_t **stack, int l_num)
 {
 	int i;
 	char **opcode;
 	instruction_t inst[] = {
 		{"push", _op_push},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 
 	opcode = _strtow(command, " \t");
 	if (_strcmp(opcode[0], "pall") == 0)

@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 
@@ -12,4 +12,4 @@ int _execute(const char *command, stack_t **stack, int l_num);
 void _op_push(stack_t **stack, unsigned int n);
 void _op_pall(const stack_t *stack);
 
-#endif /* MAIN_H */
+#endif /* MONTY_H */
