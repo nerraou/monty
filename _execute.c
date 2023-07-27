@@ -31,6 +31,8 @@ int _execute(char *command, stack_t **stack, int l_num)
 		{"pall", _op_pall},
 		{"pint", _op_pint},
 		{"pop", _op_pop},
+		{"swap", _op_swap},
+		{"add", _op_add},
 		{NULL, NULL}};
 
 	g_vars.args = _strtow(command, " \t\r\n");
