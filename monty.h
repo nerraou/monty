@@ -67,7 +67,6 @@ void _op_pall(stack_t **stack, unsigned int l_num);
 void _op_pint(stack_t **stack, unsigned int l_num);
 void _op_pop(stack_t **stack, unsigned int l_num);
 
-int _getline(int fd, char **linep);
 ssize_t _str_index_of(const char *str, char c);
 char *_strdup(const char *str);
 char *_strcpy(char *dest, const char *src);
@@ -80,7 +79,6 @@ char **_strtow(const char *str, const char *set);
 int _strcmp(char *s1, char *s2);
 int _isspace(char c);
 int _is_int(const char *str);
-unsigned int _atou(const char *str);
 void free_args(char **args);
 
 #endif /* MONTY_H */
