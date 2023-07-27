@@ -1,6 +1,6 @@
 #include "monty.h"
 
-FILE *file = NULL;
+global_t g_vars = {0};
 
 /**
  * print_and_exit - print error and exit
@@ -16,8 +16,8 @@ void print_and_exit(char *message, char *arg)
 	}
 	else
 	{
-		if (file)
-			fclose(file);
+		if (g_vars.file)
+			fclose(g_vars.file);
 		fprintf(stderr, "%s\n", message);
 		exit(EXIT_FAILURE);
 	}
@@ -33,8 +33,7 @@ void protected_execute(char *trimed, stack_t **stack, int l_num)
 {
 	if (_execute(trimed, stack, l_num) == 0)
 	{
-		fclose(file);
-		free(trimed);
+		fclose(g_vars.file);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -58,14 +57,14 @@ int main(int ac, char *av[])
 	stack = NULL;
 	if (ac != 2)
 		print_and_exit("USAGE: monty file", NULL);
-	file = fopen(av[1], "r");
-	if (!file)
+	g_vars.file = fopen(av[1], "r");
+	if (!g_vars.file)
 		print_and_exit("Error: Can't open file", av[1]);
 	while (1)
 	{
 		line = NULL;
 		len = 0;
-		nread = getline(&line, &len, file);
+		nread = getline(&line, &len, g_vars.file);
 		if (nread <= 0)
 		{
 			free(line);
@@ -80,10 +79,9 @@ int main(int ac, char *av[])
 		}
 		if (trimed[0] != '\0')
 			protected_execute(trimed, &stack, line_number);
-		free(trimed);
 		line_number++;
 	}
 	free_dlistint(stack);
-	fclose(file);
+	fclose(g_vars.file);
 	return (EXIT_SUCCESS);
 }

@@ -9,7 +9,7 @@ void _op_push(stack_t **stack, int n)
 {
 	if (add_dnodeint(stack, n) == NULL)
 	{
-		fclose(file);
+		fclose(g_vars.file);
 		fprintf(stderr, "Error: malloc failed\n");
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);

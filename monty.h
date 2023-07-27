@@ -10,7 +10,20 @@
 
 #define BUFFER_SIZE 5
 
-extern FILE *file;
+/**
+ * struct globals - global structure to use in the functions
+ * @args: opcodes
+ * @file: fd
+ *
+ * Description: global variables
+ */
+typedef struct globals
+{
+	char **args;
+	FILE *file;
+} global_t;
+
+extern global_t g_vars;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -46,7 +59,7 @@ stack_t *add_dnodeint(stack_t **head, unsigned int n);
 size_t print_dlistint(const stack_t *h);
 void free_dlistint(stack_t *head);
 
-int _execute(const char *command, stack_t **stack, int l_num);
+int _execute(char *command, stack_t **stack, int l_num);
 
 void _op_push(stack_t **stack, int n);
 void _op_pall(stack_t **stack, unsigned int l_num);
