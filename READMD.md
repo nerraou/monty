@@ -1,1 +1,0 @@
-motry FIFO LIFO
