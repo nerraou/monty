@@ -47,17 +47,20 @@ void free_command(char **command)
 int _execute(const char *command, stack_t **stack, int l_num)
 {
 	int i;
+	int error;
 	char **opcode;
 	instruction_t inst[] = {
-		{"push", _op_push},
+		{"pall", _op_pall},
 		{NULL, NULL}};
 
 	opcode = _strtow(command, " \t\r\n");
-	if (_strcmp(opcode[0], "pall") == 0)
+	if (_strcmp(opcode[0], "push") == 0)
 	{
-		_op_pall(*stack);
+		error = _opcode_check_error(opcode[1], 0, l_num);
+		if (error == 1)
+			_op_push(stack, atoi(opcode[1]));
 		free_command(opcode);
-		return (1);
+		return (error);
 	}
 	i = 0;
 	while (inst[i].opcode)
@@ -67,14 +70,7 @@ int _execute(const char *command, stack_t **stack, int l_num)
 		i++;
 	}
 	if (inst[i].opcode != NULL)
-	{
-		if (_opcode_check_error(opcode[1], i, l_num) == 0)
-		{
-			free_command(opcode);
-			return (0);
-		}
-		inst[i].f(stack, atoi(opcode[1]));
-	}
+		inst[i].f(stack, l_num);
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", l_num, opcode[0]);
