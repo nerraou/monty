@@ -23,5 +23,5 @@ void _op_sub(stack_t **stack, unsigned int l_num)
 	val1 = (*stack)->n;
 	pop_dlistnode(stack);
 	val2 = (*stack)->n;
-	(*stack)->n = abs(val1 - val2);
+	(*stack)->n = val2 - val1;
 }
