@@ -68,9 +68,7 @@ int main(int ac, char *av[])
 			line = NULL;
 			len = 0;
 			nread = getline(&line, &len, file);
-			if (nread == -1)
-				print_and_exit("Error: malloc failed", NULL);
-			if (nread == 0)
+			if (nread <= 0)
 				break;
 			trimed = _strtrim(line, " \t\n\r");
 			free(line);
