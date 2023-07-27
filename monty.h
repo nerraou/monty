@@ -1,6 +1,8 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,7 +10,7 @@
 
 #define BUFFER_SIZE 5
 
-extern int fd;
+extern FILE *file;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

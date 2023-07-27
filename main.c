@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int fd = -1;
+FILE *file = NULL;
 
 /**
  * print_and_exit - print error and exit
@@ -9,8 +9,6 @@ int fd = -1;
  */
 void print_and_exit(char *message, char *arg)
 {
-	if (fd >= 0)
-		close(fd);
 	if (arg)
 	{
 		fprintf(stderr, "%s %s\n", message, arg);
@@ -18,6 +16,8 @@ void print_and_exit(char *message, char *arg)
 	}
 	else
 	{
+		if (file)
+			fclose(file);
 		fprintf(stderr, "%s\n", message);
 		exit(EXIT_FAILURE);
 	}
@@ -33,7 +33,7 @@ void protected_execute(char *trimed, stack_t **stack, int l_num)
 {
 	if (_execute(trimed, stack, l_num) == 0)
 	{
-		close(fd);
+		fclose(file);
 		free(trimed);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
@@ -50,7 +50,8 @@ int main(int ac, char *av[])
 {
 	char *line;
 	char *trimed;
-	int size;
+	size_t len = 0;
+	ssize_t nread;
 	int line_number = 1;
 	stack_t *stack;
 
@@ -59,15 +60,17 @@ int main(int ac, char *av[])
 		print_and_exit("USAGE: monty file", NULL);
 	else
 	{
-		fd = open(av[1], O_RDONLY);
-		if (fd < 0)
+		file = fopen(av[1], "r");
+		if (!file)
 			print_and_exit("Error: Can't open file", av[1]);
 		while (1)
 		{
-			size = _getline(fd, &line);
-			if (size == -1)
+			line = NULL;
+			len = 0;
+			nread = getline(&line, &len, file);
+			if (nread == -1)
 				print_and_exit("Error: malloc failed", NULL);
-			if (size == 0)
+			if (nread == 0)
 				break;
 			trimed = _strtrim(line, " \t\n\r");
 			free(line);
@@ -82,7 +85,7 @@ int main(int ac, char *av[])
 			line_number++;
 		}
 		free_dlistint(stack);
-		close(fd);
+		fclose(file);
 	}
 	return (EXIT_SUCCESS);
 }
