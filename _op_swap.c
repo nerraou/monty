@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * _op_swap - pop node
+ * _op_swap - swap node
  * @stack: list head
  * @l_num: line number
  */

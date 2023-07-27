@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * _op_add - pop node
+ * _op_add - add node
  * @stack: list head
  * @l_num: line number
  */

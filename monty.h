@@ -68,6 +68,7 @@ void _op_pall(stack_t **stack, unsigned int l_num);
 void _op_pint(stack_t **stack, unsigned int l_num);
 void _op_pop(stack_t **stack, unsigned int l_num);
 void _op_swap(stack_t **stack, unsigned int l_num);
+void _op_nop(stack_t **stack, unsigned int l_num);
 void _op_add(stack_t **stack, unsigned int l_num);
 
 ssize_t _str_index_of(const char *str, char c);
