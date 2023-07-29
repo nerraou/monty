@@ -76,6 +76,7 @@ void _op_div(stack_t **stack, unsigned int l_num);
 void _op_mul(stack_t **stack, unsigned int l_num);
 void _op_mod(stack_t **stack, unsigned int l_num);
 void _op_pchar(stack_t **stack, unsigned int l_num);
+void _op_pstr(stack_t **stack, unsigned int l_num);
 
 ssize_t _str_index_of(const char *str, char c);
 char *_strdup(const char *str);
