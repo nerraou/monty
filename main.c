@@ -77,7 +77,7 @@ int main(int ac, char *av[])
 			free_dlistint(stack);
 			print_and_exit("Error: malloc failed", NULL);
 		}
-		if (trimed[0] != '\0')
+		if (trimed[0] != '\0' && trimed[0] != '#')
 			protected_execute(trimed, &stack, line_number);
 		else
 			free(trimed);
